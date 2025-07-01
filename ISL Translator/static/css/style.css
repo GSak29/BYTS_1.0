@@ -1,0 +1,346 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #1a202c;
+}
+
+.main-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    background-image: url('/extra/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+}
+
+.video-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#videoFeed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1); /* Mirror the video feed */
+}
+
+.controls-container {
+    height: 100vh;
+    overflow-y: auto;
+    position: sticky;
+    top: 0;
+    background-color: #000000;
+    border-right: 1px solid #333333;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+}
+
+.detection-controls {
+    background-color: #000000;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: white;
+}
+
+.loading-overlay .spinner-border {
+    width: 3rem;
+    height: 3rem;
+    border-width: 0.3em;
+    margin-bottom: 1rem;
+}
+
+.loading-overlay .loading-text {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+/* Cards */
+.output-card, .sentence-card, .llm-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    color: #1a202c;
+}
+
+.output-card {
+    min-height: 150px;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.output-card .badge {
+    transition: all 0.3s ease;
+}
+
+.output-card .badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.sentence-card {
+    min-height: 100px;
+    background-color: #ffffff;
+}
+
+.llm-card {
+    min-height: 150px;
+    background-color: #ffffff;
+}
+
+/* Buttons */
+.btn {
+    transition: all 0.3s ease;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btn-success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-warning {
+    background-color: #2196F3;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Button loading states */
+.btn .fa-spinner {
+    margin-right: 8px;
+}
+
+.btn .fa-check {
+    margin-right: 8px;
+}
+
+/* Status indicators */
+.status-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.status-indicator i {
+    margin-right: 8px;
+}
+
+.status-indicator.active {
+    color: #4CAF50;
+}
+
+.status-indicator.active i {
+    color: #4CAF50;
+}
+
+.status-indicator.inactive {
+    color: #f44336;
+}
+
+.status-indicator.inactive i {
+    color: #f44336;
+}
+
+/* Form Elements */
+.form-control, .form-select {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #1a202c;
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #ffffff;
+    border-color: #2196F3;
+    color: #1a202c;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+/* Headings */
+h2, h5 {
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Section Headers */
+.section-header {
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #333333;
+}
+
+/* Word Badges */
+.word-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #2196F3;
+    color: white;
+    border-radius: 20px;
+    margin: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Animation for word badges */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.badge.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #333333;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2196F3;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #1976D2;
+}
+
+/* Form Switches */
+.form-check-input:checked {
+    background-color: #2196F3;
+    border-color: #2196F3;
+}
+
+/* Camera Properties */
+.camera-properties {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 8px;
+    border-radius: 8px;
+    color: white;
+    font-size: 0.8rem;
+}
+
+.camera-prop {
+    margin: 4px 0;
+    display: flex;
+    align-items: center;
+}
+
+.camera-prop i {
+    margin-right: 8px;
+    color: #2196F3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .controls-container {
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid #333333;
+    }
+    
+    .video-container {
+        padding-bottom: 75%; /* 4:3 Aspect Ratio for mobile */
+    }
+
+    .main-container {
+        flex-direction: column;
+    }
+
+    .output-card, .sentence-card, .llm-card {
+        font-size: 16px;
+    }
+    
+    .word-badge {
+        font-size: 0.8rem;
+    }
+} 
